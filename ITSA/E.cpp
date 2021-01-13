@@ -13,17 +13,17 @@ int main()
     lint n = A.size();
     lint index[n];
     double get[n];
-    lint maxx_i;
+    lint maxx_i = -1;
     double maxx_v = -1;
     for(int i=n-1;i>=0;i--)
     {
-        if(maxx_v < A[i])
+        index[i] = maxx_i;
+        get[i] = maxx_v - A[i];
+         if(maxx_v < A[i])
         {
             maxx_v = A[i];
             maxx_i = i;
         }
-        index[i] = maxx_i;
-        get[i] = maxx_v - A[i];
     }
     maxx_v = -1;
     for(int i=0;i<n;i++)
@@ -34,7 +34,7 @@ int main()
             maxx_i = i;
         }
     }
-    if(maxx_v == 0)
+    if(maxx_v < 0.000001)
     {
         cout << "No profit!\n";
     }
